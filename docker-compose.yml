@@ -1,0 +1,43 @@
+version: "3"
+services:
+  web:
+    image: nginx:alpine
+    container_name: web
+    restart: unless-stopped
+    volumes:
+      - ./web/site:/usr/share/nginx/html
+      - ./web/conf:/etc/nginx/conf.d
+      - ./logs/:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+
+  app:
+    build:
+      context: app
+      dockerfile: Dockerfile
+    container_name: app
+    restart: unless-stopped
+    ports:
+      - "4567:4567"
+    networks:
+      - app-network
+
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: app-db
+      MYSQL_ROOT_PASSWORD: password
+    ports: 
+      - "3306:3306"
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
