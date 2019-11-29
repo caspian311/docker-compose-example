@@ -56,5 +56,5 @@ So since this is a place for learning, I thought I'd start a list of things I'd 
 * Enabling a better local development model (restarting all the containers everytime there's a change is not ideal)
 * Using `terraform` to push this out to AWS
 * Throw in a more interesting JS example (React or Angular or something)
-
+* Do the migration/seeding of the database automatically
 
