@@ -1,4 +1,4 @@
 get '/api/messages' do
-  payload = [{ message: 'success' }]
+  payload = Message.all
   json payload
 end
