@@ -3,9 +3,12 @@ require 'bundler'
 Bundler.require(:default, ENV.fetch('RACK_ENV', 'development'))
 
 class MyApp < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
   configure :production, :development do
     enable :logging
   end
+
+  require File.join(root, '/config/initializers/autoloader.rb')
 end
 
 configure do
@@ -23,9 +26,4 @@ options '*' do
   response.headers['Access-Control-Allow-Headers'] = 'Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token'
   response.headers['Access-Control-Allow-Origin'] = '*'
   200
-end
-
-get '/api' do
-  payload = { message: 'success' }
-  json payload
 end

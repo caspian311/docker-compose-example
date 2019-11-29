@@ -1,7 +1,7 @@
 (function() {
 
-  $.get('/api').done(function(data) {
-    $('#message').html(data['message']);
+  $.get('/api/messages').done(function(data) {
+    $('#message').html(data[0]['message']);
   });
 
 })();
