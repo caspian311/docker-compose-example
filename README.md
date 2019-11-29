@@ -43,7 +43,7 @@ $ docker-compose down
 
 ### Rebuilding
 
-If you make some changes to the application server, Docker doesn't necessarily know that something changed and so it won't rebuild the image. To force a rebuild, you can run this command.
+The app server is setup to auto-reload when files change and they are mounted as volumes to the running container. So any changes to the app's code should be automatically avaialable. If larger changes are made that require restarting the service, simply doing a down and up will refresh the service. But if for whatever reason you need make a change that requires a rebuilding of the container and Docker doesn't necessarily know that something changed, you can run this command...
 
 ```
 $ docker-compose up --force-recreate --build
@@ -53,8 +53,10 @@ $ docker-compose up --force-recreate --build
 
 So since this is a place for learning, I thought I'd start a list of things I'd like to explore in the future...
 
-* Enabling a better local development model (restarting all the containers everytime there's a change is not ideal)
-* Using `terraform` to push this out to AWS
-* Throw in a more interesting JS example (React or Angular or something)
-* Do the migration/seeding of the database automatically
+ - [x] Enabling a better local development model (restarting all the containers everytime there's a change is not ideal)
+ - [ ] Do the migration/seeding of the database automatically
+ - [ ] Unit tests
+ - [ ] E2E testing with running containers
+ - [ ] Throw in a more interesting JS example (React or Angular or something)
+ - [ ] Using `terraform` to push this out to AWS
 

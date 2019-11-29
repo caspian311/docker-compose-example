@@ -22,10 +22,11 @@ services:
     restart: unless-stopped
     ports:
       - "4567:4567"
+    volumes:
+      - ./app:/app
     environment:
-      RACK_ENV: production
       DATABASE_HOST: db
-      DATABASE_NAME: app-db
+      DATABASE_NAME: app-db-dev
       DATABASE_USER: root
       DATABASE_PASSWORD: password
     networks:

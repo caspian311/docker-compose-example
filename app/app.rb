@@ -4,15 +4,19 @@ Bundler.require(:default, ENV.fetch('RACK_ENV', 'development'))
 
 class MyApp < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-  configure :production, :development do
-    enable :logging
-  end
+  register Sinatra::Reloader
 
   require File.join(root, '/config/initializers/autoloader.rb')
 end
 
+after_reload do
+  puts 'reloaded'
+end
+
 configure do
   enable :cross_origin
+  enable :logging
+  enable :reloader
 
   set :bind, '0.0.0.0'
 end
