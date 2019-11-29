@@ -58,5 +58,6 @@ So since this is a place for learning, I thought I'd start a list of things I'd 
  - [ ] Unit tests
  - [ ] E2E testing with running containers
  - [ ] Throw in a more interesting JS example (React or Angular or something)
- - [ ] Using `terraform` to push this out to AWS
+ - [ ] Migrate to Kubernetes for hosted environments
+ - [ ] Using Terraform to push this out to AWS
 
