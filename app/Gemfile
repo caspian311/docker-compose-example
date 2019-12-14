@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'awesome_print', '~>1.8.0'
 gem 'mysql2', '~>0.4'
 gem 'puma', '~>4.3.0'
 gem 'rack', '~>2.0.7'
