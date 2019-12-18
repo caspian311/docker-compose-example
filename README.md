@@ -2,19 +2,19 @@
 
 This purpose of the repo is to create a space to work with `docker-compose`. So this will spin up 3 docker container that need to talk with each other for everything to work. We have a web server (Nginx), an app server (Sinatra), and a database (MySQL). When all is working well, you can visit [localhost](http://localhost) and see data pulled from the database and rendered to the screen.
 
-## Commands
+## Local Development
 
-So here are the command lines you need to know...
+To do local development, you need to start up the containers using *docker-compose*. Once they're up, from the checked out git repo, they'll be using mount points that are allow file manipulation outside of the container to trigger updates in the running services.
 
-### Building and running all containers
+### Up and running
 
-To get everything up and going, run this command...
+So to get everything up and going, run this command...
 
 ```
- $ docker-compose -d up 
+ $ docker-compose up 
 ```
 
-It should build all 3 docker containers and start them up. The `-d` is optional, it'll run it in the background as a daemon.
+It should build all 3 docker containers and start them up. You can add a `-d` to the end to have it run in the background as a daemon.
 
 There is one caveat. Sinatra is using `activerecord` which will need to migrate and seed your database before you'll have anything to show. To do that, you'll need to jump into the running docker container and run the migrate and seed commands.
 
@@ -33,7 +33,17 @@ root@b1e0e2c52dce:/app# bundle exec rake db:migrate db:seed
 ```
 Now you should be able to visit [localhost](http://localhost) and see the site.
 
-### Stopping everything
+### Making edits/developing
+
+Once everything is running, you can make edits to the app server by modifying the files in the *app/* directory. This will cause the *Sinatra* application to reload and your changes will be available in the deployed instance.
+
+For the React app, it's a little more tricky. The *Nginx* server is pointing to the *web/build* directory as a mounted volume, so you can make edits there but it won't be immediately available in the app because the app needs to be compiled. So I added an *npm-watch* script to the *package.json* so you can run the following command and have the React app build as you make file changes and have that be reflected in the running application.
+
+```
+$ npm run watch
+```
+
+### Shutting it down
 
 So at some point you'll want to shut it down. If you started it without the `-d` optional, you can just type `CTR-C`. But if you did use the `-d` option, it's running in the background, so you'll need to run this...
 
@@ -43,7 +53,7 @@ $ docker-compose down
 
 ### Rebuilding
 
-The app server is setup to auto-reload when files change and they are mounted as volumes to the running container. So any changes to the app's code should be automatically avaialable. If larger changes are made that require restarting the service, simply doing a down and up will refresh the service. But if for whatever reason you need make a change that requires a rebuilding of the container and Docker doesn't necessarily know that something changed, you can run this command...
+Auto-reload **should work** all the time, but when it doesn't, you need to do a hard-rebuild when files change and they are mounted as volumes to the running container. To do this, run the following command.
 
 ```
 $ docker-compose up --force-recreate --build
@@ -57,7 +67,7 @@ So since this is a place for learning, I thought I'd start a list of things I'd 
  - [ ] Do the migration/seeding of the database automatically
  - [ ] Unit tests
  - [ ] E2E testing with running containers
- - [ ] Throw in a more interesting JS example (React or Angular or something)
+ - [x] Throw in a more interesting JS example (React or Angular or something)
  - [ ] Migrate to Kubernetes for hosted environments
  - [ ] Using Terraform to push this out to AWS
 
