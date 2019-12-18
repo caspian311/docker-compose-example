@@ -7,6 +7,6 @@ export async function loadMessage(dispatch) {
     const message = await messageService.loadMessage();
     dispatch({ type: types.APP_LOADED, payload: message });
   } catch (error) {
-    alert(error);
+    dispatch({ type: types.ERROR_ON_LOADING, payload: error });
   }
 }
