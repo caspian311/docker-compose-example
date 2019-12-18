@@ -5,7 +5,7 @@ services:
     container_name: web
     restart: unless-stopped
     volumes:
-      - ./web/site:/usr/share/nginx/html
+      - ./web/build:/usr/share/nginx/html
       - ./web/conf:/etc/nginx/conf.d
       - ./logs/:/var/log/nginx
     ports:
