@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as AppActions from '../actions/AppActions';
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadMessage();
   }
 
