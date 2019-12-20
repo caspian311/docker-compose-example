@@ -8,6 +8,11 @@ const errorReducer = (state = initialState, action) => {
           ...state,
           errorMessage: action.payload.message
         };
+    case types.DISMISS_ERROR:
+      return {
+          ...state,
+          errorMessage: undefined
+        };
     default:
       return state
   }
