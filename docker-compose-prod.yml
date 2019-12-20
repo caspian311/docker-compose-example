@@ -1,0 +1,47 @@
+version: "3"
+services:
+  web:
+    image: 792688616974.dkr.ecr.us-east-1.amazonaws.com/experiment-web:latest
+    container_name: web
+    restart: unless-stopped
+    volumes:
+      - ./logs/:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+
+  app:
+    image: 792688616974.dkr.ecr.us-east-1.amazonaws.com/experiment-app:latest
+    container_name: app
+    restart: unless-stopped
+    ports:
+      - "4567:4567"
+    environment:
+      DATABASE_HOST: db
+      DATABASE_NAME: app-db-dev
+      DATABASE_USER: root
+      DATABASE_PASSWORD: password
+    networks:
+      - app-network
+
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: app-db
+      MYSQL_ROOT_PASSWORD: password
+    ports: 
+      - "3306:3306"
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./logs:/var/log/mysql
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
