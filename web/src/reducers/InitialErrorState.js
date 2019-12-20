@@ -1,6 +1,5 @@
 export default {
-  loading: false,
-  message: 'nothing yet',
+  showError: false,
   errorMessage: undefined
 };
 

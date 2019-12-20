@@ -1,4 +1,7 @@
-export const APP_LOADING = 'APP_LOADING';
-export const APP_LOADED = 'APP_LOADED';
-export const ERROR_ON_LOADING = 'ERROR_ON_LOADING';
+export const APP_LOADING = "APP_LOADING";
+export const MESSAGE_LOADED = "MESSAGE_LOADED";
+export const APP_STOPPED_LOADING = "APP_STOPPED_LOADING";
+export const SHOW_ERROR= "SHOW_ERROR";
+export const MENU_OPENED = "MENU_OPENED";
+export const MENU_CLOSED = "MENU_CLOSED";
 

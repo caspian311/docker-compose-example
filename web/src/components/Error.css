@@ -1,0 +1,30 @@
+.error {
+  background: #f00;
+  color: #fff; 
+  position: absolute;
+  transition: 0.5s;
+  top: -200px;
+  padding: 10px;
+}
+
+.error.show {
+  -webkit-transform: translate(0, 200px);
+  transform: translate(0, 200px);
+}
+
+.error .details {
+  margin-top: 20px;
+  border-top: 2px solid #fff;
+  padding-top: 10px;
+}
+
+.error h3 {
+  font-size: 15pt;
+  margin: 10px 0;
+}
+
+.close {
+  float: right;
+  padding: 10px;
+  cursor: pointer;
+}

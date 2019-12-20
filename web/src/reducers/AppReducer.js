@@ -8,18 +8,15 @@ const appReducer = (state = initialState, action) => {
           ...state,
           loading: true,
         };
-    case types.APP_LOADED:
+    case types.MESSAGE_LOADED:
       return {
           ...state,
-          loading: false,
           message: action.payload
         };
-    case types.ERROR_ON_LOADING:
+    case types.APP_STOPPED_LOADING:
       return {
           ...state,
           loading: false,
-          error: true,
-          errorMessage: action.payload
         };
     default:
       return state

@@ -5,8 +5,10 @@ export async function loadMessage(dispatch) {
   dispatch({ type: types.APP_LOADING});
   try {
     const message = await messageService.loadMessage();
-    dispatch({ type: types.APP_LOADED, payload: message });
+    dispatch({ type: types.MESSAGE_LOADED, payload: message });
+    dispatch({ type: types.APP_STOPPED_LOADING });
   } catch (error) {
-    dispatch({ type: types.ERROR_ON_LOADING, payload: error });
+    dispatch({ type: types.APP_STOPPED_LOADING });
+    dispatch({ type: types.SHOW_ERROR, payload: error });
   }
 }

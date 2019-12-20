@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <style>
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .header {
+    background: #000;
+    padding: 12px;
+  }
+
+  .title {
+    color: #fff;
+    display: inline;
+    font-size: 50pt;
+    font-weight: normal;
+  }
+
+  .hamburger-menu {
+    display: inline-block;
+    cursor: pointer;
+    float: right;
+    padding: 10px;
+  }
+
+  .bar1, .bar2, .bar3 {
+    background: #fff;
+    height: 7px;
+    width: 50px;
+    margin: 10px 0;
+    transition: 0.5s;
+  }
+
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 15px);
+    transform: rotate(-45deg) translate(-9px, 15px);
+  }
+
+  .change .bar2 {opacity: 0;}
+
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -15px);
+    transform: rotate(45deg) translate(-8px, -15px);
+  }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Experiments</h1>
+      <div class="hamburger-menu" onclick="javascript: window.myFunction(this);">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </div>
+    <script>
+      window.myFunction = function(x) {
+        x.classList.toggle('change');
+      }
+    </script>
+  </body>
+</html>
