@@ -1,10 +1,12 @@
 .error {
   background: #f00;
   color: #fff; 
-  position: absolute;
-  transition: 0.5s;
+  position: fixed;
   top: -200px;
+  left: 0;
+  right: 0;
   padding: 10px;
+  transition: 0.5s;
 }
 
 .error.show {
