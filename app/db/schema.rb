@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191129140622) do
+ActiveRecord::Schema.define(version: 20191221144954) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+  end
+
+  create_table "character_categories", force: :cascade do |t|
+    t.integer "character_id", limit: 4
+    t.integer "category_id",  limit: 4
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name",        limit: 255, null: false
+    t.string "description", limit: 255, null: false
+    t.string "image",       limit: 255, null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "message", limit: 255
