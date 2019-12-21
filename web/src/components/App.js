@@ -25,8 +25,8 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  isAppLoading: state.appReducer.loading,
-  message: state.appReducer.message,
+  isAppLoading: state.app.loading,
+  message: state.app.message,
 });
 
 const mapDispatchToProps = dispatch => ({

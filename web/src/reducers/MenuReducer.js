@@ -1,7 +1,7 @@
-import initialState from "./InitialHeaderState";
+import initialState from "./InitialMenuState";
 import * as types from "../actions/ActionTypes";
 
-const headerReducer = (state = initialState, action) => {
+const menuReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.MENU_CLOSED:
       return {
@@ -18,4 +18,4 @@ const headerReducer = (state = initialState, action) => {
   }
 };
 
-export default headerReducer;
+export default menuReducer;

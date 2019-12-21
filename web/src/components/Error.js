@@ -29,8 +29,8 @@ class Error extends Component {
 }
 
 const mapStateToProps = state => ({
-  showError: state.errorReducer.errorMessage !== undefined,
-  errorMessage: state.errorReducer.errorMessage
+  showError: state.error.errorMessage !== undefined,
+  errorMessage: state.error.errorMessage
 });
 
 const mapDispatchToProps = dispatch => ({

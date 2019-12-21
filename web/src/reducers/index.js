@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import appReducer from './AppReducer'
-import headerReducer from './HeaderReducer'
-import errorReducer from './ErrorReducer'
+import app from './AppReducer'
+import menu from './MenuReducer'
+import error from './ErrorReducer'
 
 export default combineReducers({
-  appReducer,
-  headerReducer,
-  errorReducer
+  app,
+  menu,
+  error
 })
