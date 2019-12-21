@@ -1,19 +1,19 @@
-import initialState from "./InitialAppState";
+import initialState from "./InitialCharactersState";
 import * as types from '../actions/ActionTypes';
 
-const appReducer = (state = initialState, action) => {
+const charactersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.APP_LOADING:
+    case types.CHARACTERS_LOADING:
       return {
           ...state,
           loading: true,
         };
-    case types.MESSAGE_LOADED:
+    case types.CHARACTERS_LOADED:
       return {
           ...state,
-          message: action.payload
+          characters: action.payload
         };
-    case types.APP_STOPPED_LOADING:
+    case types.CHARACTERS_STOPPED_LOADING:
       return {
           ...state,
           loading: false,
@@ -23,4 +23,4 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-export default appReducer;
+export default charactersReducer;

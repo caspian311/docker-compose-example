@@ -1,25 +1,19 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import * as AppActions from '../actions/AppActions';
 import './App.css';
 import Header from './Header';
 import SideNav from './SideNav';
 import Error from './Error';
+import Characters from './Characters';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.loadMessage();
-  }
-
   render() {
     return (
       <div>
         <Error />
         <Header />
         <SideNav />
-        <div>
-          { this.props.isAppLoading ? 'Loading...' : this.props.message }
-        </div>
+        <Characters />
       </div>
     );
   }
@@ -27,15 +21,9 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  isAppLoading: state.app.loading,
-  message: state.app.message,
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadMessage() {
-    AppActions.loadMessage(dispatch);
-  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
