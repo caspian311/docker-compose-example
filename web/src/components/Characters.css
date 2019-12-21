@@ -9,12 +9,13 @@ background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(210,210,210,1) 
 }
 
 .character img {
-  padding-bottom: 12px;
+  border-radius: 50%;
 }
 
 .character-data {
   display: grid;
   grid-template-columns: auto auto;
+  padding-top: 10px;
 }
 
 .characters .info {
