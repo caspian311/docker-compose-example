@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as AppActions from '../actions/AppActions';
 import './App.css';
 import Header from './Header';
+import SideNav from './SideNav';
 import Error from './Error';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
       <div>
         <Error />
         <Header />
+        <SideNav />
         <div>
           { this.props.isAppLoading ? 'Loading...' : this.props.message }
         </div>
